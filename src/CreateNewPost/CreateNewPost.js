@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   display:flex;
   justify-content: center;
   align-items:center;
-  flex-direction:column; 
+  flex-direction:column;
   background: #fafafa;
   color: #585858;
 `;
@@ -28,7 +28,7 @@ const Form = styled.form`
     display:flex;
     justify-content: center;
     align-items:center;
-    flex-direction:column; 
+    flex-direction:column;
 `;
 const Title = styled.h3`
 
@@ -58,21 +58,23 @@ const CreateNewPost = (props) => {
                 <Title>Create new post</Title>
                 <label>Post title</label>
                 <Input
-                onChange={props.postTitle}
-                ref={props.getPostTitle}
-                type="text" 
+                value={props.postTitle}
+                onChange={props.savePostTitle}
+                //ref={props.getPostTitle}
+                type="text"
                 placeholder="Title"
                 required
                 ></Input>
                 <label>Post content</label>
                 <Textarea
-                onChange={props.postContent} 
+                //analogicznie
+                onChange={props.postContent}
                 ref={props.getPostContent}
                 placeholder="Type some text"
                 required
                 ></Textarea>
                 <Button>Add post</Button>
-            </Form>   
+            </Form>
         </Wrapper>
     )
 }

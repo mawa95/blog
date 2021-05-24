@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   display:flex;
   justify-content: center;
   align-items:center;
-  flex-direction:column; 
+  flex-direction:column;
   background: #fafafa;
   color: #585858;
 `;
@@ -38,7 +38,7 @@ const Title = styled.h1`
   font-weight: bold;
 `;
 const Text = styled.p`
-  
+
 `;
 
 const ShowPosts = () => {
@@ -49,11 +49,10 @@ const ShowPosts = () => {
     const [isUpdatePost, setIsUpdatePost] = useState(false);
     const [editPostId, setEditPostId] = useState("");
 
- 
 
-    const getPostTitle = useRef();
-    const getPostContent = useRef();
-   
+
+    
+
 
     const savePostTitle = e => {
         setPostTitle(e.target.value);
@@ -67,10 +66,10 @@ const ShowPosts = () => {
         setPosts([...posts, {postTitle, postContent, id}]);
         setPostTitle("");
         setPostContent("");
-        getPostTitle.current.value = "";
-        getPostContent.current.value = "";
+        //getPostTitle.current.value = "";
+        //getPostContent.current.value = "";
         toggleCreateNewPost();
-        
+
     };
     const toggleCreateNewPost = () => {
         setIsCreateNewPost(!isCreateNewPost);
@@ -78,7 +77,7 @@ const ShowPosts = () => {
     const toggleUpdatePost = () => {
         setIsUpdatePost(!isUpdatePost)
     }
-    
+
     const editPost = id => {
         setEditPostId(id);
         toggleUpdatePost();
@@ -104,16 +103,17 @@ const ShowPosts = () => {
         });
         setPosts(modifiedPost);
     };
-   
+
     if(isCreateNewPost){
         return(
             <Wrapper>
                 <CreateNewPost
-                    postTitle={savePostTitle}
+                    postTitle={postTitle}
+                    savePostTitle={savePostTitle}
                     postContent={savePostContent}
                     getPostTitle={getPostTitle}
                     getPostContent={getPostContent}
-                    savePost={savePost}           
+                    savePost={savePost}
                 />
             </Wrapper>
         )
@@ -136,7 +136,7 @@ const ShowPosts = () => {
         );
       }
 
- 
+
 
     return (
         <Wrapper>
@@ -149,7 +149,7 @@ const ShowPosts = () => {
           ) : (
           posts.map(post => {
             return (
-              
+
                 <Post
                   id={post.id}
                   key={post.id}
@@ -158,14 +158,14 @@ const ShowPosts = () => {
                   editPost={editPost}
                   deletePost={deletePost}
                 />
-              
-    
+
+
               );
-            
+
             })
           )}
 
-          
+
         </Wrapper>
     )
 }
